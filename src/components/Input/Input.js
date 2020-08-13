@@ -1,14 +1,37 @@
-import React from 'react'
-
-const Input=(props)=> {
-    return (
-        <div className={"form-group"}>
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" className={"form-control"} id="exampleInputEmail1" aria-describedby="emailHelp" />
-          <small id="emailHelp" className={"form-text text-muted"}>{props.inpuData.helperText}</small>
-        </div>
-        
-    )
-}
+import React from 'react';
+import { checkValidity } from '../../utility/Validation';
+import { updateObject } from '../../utility/UpdateObject';
+const Input = (props) => {
+	const changeHandler = (event) => {
+		const validatedData = checkValidity(event.target.value, props.inputData.validation);
+		console.log(props.inputData.valid);
+		const updatedObject = updateObject(props.inputData, {
+			value: event.target.value,
+			helperText: validatedData.errorText,
+			valid: validatedData.isValid,
+			touched: true,
+    });
+   
+    props.onChange({[props.inputData.name]:updatedObject});
+	};
+	return (
+		<div className={'form-group mb-4'}>
+			<input
+				className={`form-control ${(props.inputData.touched && !props.inputData.valid)?'is-invalid':''}`}
+				aria-describedby="emailHelp"
+				autoComplete="on"
+				placeholder={props.inputData.placeholder}
+				type={props.inputData.type}
+				defaultValue={props.inputData.value}
+				required={true}
+				onChange={changeHandler}
+			/>
+<div  className={"invalid-feedback"}>
+{props.inputData.helperText}
+      </div>
+			
+		</div>
+	);
+};
 
 export default Input;

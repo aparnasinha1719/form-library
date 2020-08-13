@@ -1,0 +1,19 @@
+.formDiv{
+    width:50%;
+    margin:100px auto;
+    display:block;
+    padding: 30px;
+    box-shadow: 1px 1px 7px 3px rgba(0,0,0,0.06);
+}
+
+.formDiv input,.formDiv select{
+    height: 50px;
+    border-radius: 30px;
+    background-color: #d3d3d31f;
+}
+.formDiv input::placeholder{
+    color: rgb(172, 185, 199);
+}
+.submitBtn{
+    width:200px
+}

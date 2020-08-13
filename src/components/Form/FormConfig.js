@@ -3,47 +3,66 @@ const commonFields={
     helperText:'',
     valid:false,
     touched:false,
-    required:true
 
 }
-export const formData={
-    ...commonFields,
+export const formConfigData={
     name:{
+    ...commonFields,
         type:'text',
+        name:'name',
         placeholder:'Name',
-        validationBy:'text',
+        validation: {
+            required: true,
+            isCharOnly : true
+        },
         
     },
     gender:{
-        ...commonFields,
-        placeholder:'Name',
-        value:'',
+        name:'gender',
+        placeholder:'Gender',
+        value:'male',
         isSelect:true,
         options:['male','female']
     },
     phone:{
         ...commonFields,
+        name:'phone',
         type:'tel',
         placeholder:'Phone',
-        validationBy:'phone',
+        validation: {
+            required: true,
+            isPhone : true
+        },
     },
     country:{
         ...commonFields,
+        name:'country',
         type:'text',
         placeholder:'Country',
-        validationBy:'text',
+        validation: {
+            required: true,
+            isCharOnly : true
+        },
   
     },
     email:{
         ...commonFields,
+        name:'email',
         type:'email',
         placeholder:'Email Address',
-        validationBy:'email',
+        validation: {
+            required: true,
+            isEmail : true
+        },
     },
     password:{
         ...commonFields,
+        name:'password',
         type:'password',
         placeholder:'Password',
-        validationBy:'password'
+        validation: {
+            required: true,
+            isPassword : true
+        },
     }
 }
